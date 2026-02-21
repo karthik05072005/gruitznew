@@ -3,13 +3,13 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
-import logo from "@/assets/grituz-logo.png";
+import GrituzLogo from "@/components/brand/GrituzLogo";
 
 const navLinks = [
   { name: "Home", path: "/" },
-  { name: "About", path: "/about" },
   { name: "Services", path: "/services" },
-  { name: "Careers", path: "/careers" },
+  { name: "About", path: "/about" },
+  { name: "Blog", path: "/blog" },
   { name: "Contact", path: "/contact" },
 ];
 
@@ -41,9 +41,7 @@ export default function Header() {
       <div className="container-custom">
         <nav className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
-            <img src={logo} alt="Grituz" className="h-10 w-auto" />
-          </Link>
+          <GrituzLogo />
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-8">
@@ -65,7 +63,7 @@ export default function Header() {
           {/* CTA Button */}
           <div className="hidden lg:flex items-center gap-4">
             <Button variant="hero" asChild>
-              <Link to="/get-quote">Get A Quote</Link>
+              <Link to="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer">Let's Talk</Link>
             </Button>
           </div>
 
@@ -104,7 +102,7 @@ export default function Header() {
                 </Link>
               ))}
               <Button variant="hero" className="w-full mt-4" asChild>
-                <Link to="/get-quote">Get A Quote</Link>
+                <Link to="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer">Let's Talk</Link>
               </Button>
             </div>
           </motion.div>

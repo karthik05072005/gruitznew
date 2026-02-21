@@ -1,75 +1,76 @@
 import { Link } from "react-router-dom";
-import { Mail, MapPin, Send } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import logo from "@/assets/grituz-logo.png";
+import { Mail, MapPin, Phone, Instagram, Facebook, Youtube } from "lucide-react";
+import { motion } from "framer-motion";
 
-const quickLinks = [
+const navigationLinks = [
   { name: "Home", path: "/" },
-  { name: "About", path: "/about" },
   { name: "Services", path: "/services" },
-  { name: "Careers", path: "/careers" },
+  { name: "About", path: "/about" },
+  { name: "Blog", path: "/blog" },
   { name: "Contact", path: "/contact" },
 ];
 
-const services = [
-  { name: "Web Design", path: "/services#web-design" },
-  { name: "Branding", path: "/services#branding" },
-  { name: "Digital Marketing", path: "/services#marketing" },
-  { name: "Web Support", path: "/services#support" },
+const servicesLinks = [
+  { name: "Web Design", path: "/services/web-design" },
+  { name: "Digital Marketing", path: "/services/digital-marketing" },
+  { name: "Branding", path: "/services/branding" },
+  { name: "AI Automation", path: "/services/ai-automation" },
+  { name: "Custom Software", path: "/services/custom-software" },
+  { name: "Web Support", path: "/services/web-support" },
+];
+
+const socialLinks = [
+  { icon: Instagram, href: "#", label: "Instagram" },
+  { icon: Facebook, href: "#", label: "Facebook" },
+  { icon: Youtube, href: "#", label: "YouTube" },
 ];
 
 export default function Footer() {
   return (
-    <footer className="bg-foreground text-background">
-      {/* Newsletter Section */}
-      <div className="border-b border-background/10">
-        <div className="container-custom py-12">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div>
-              <h3 className="heading-sm text-background mb-2">
-                Subscribe to Our Newsletter
-              </h3>
-              <p className="text-background/70">
-                Get the latest insights and updates delivered to your inbox.
-              </p>
-            </div>
-            <div className="flex gap-3 w-full md:w-auto">
-              <Input
-                type="email"
-                placeholder="Enter your email"
-                className="bg-background/10 border-background/20 text-background placeholder:text-background/50 w-full md:w-72"
-              />
-              <Button variant="hero" size="icon" className="shrink-0">
-                <Send className="w-4 h-4" />
-              </Button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Footer */}
+    <footer className="bg-gradient-to-b from-secondary/30 to-background border-t border-glass-border">
       <div className="container-custom py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* Brand */}
-          <div className="space-y-4">
-            <img src={logo} alt="Grituz" className="h-12 brightness-0 invert" />
-            <p className="text-background/70 text-sm leading-relaxed">
-              A premium web design and digital marketing agency helping
-              businesses build powerful online presence since 2010.
+          {/* Column 1 - Brand & Intro */}
+          <div className="space-y-6">
+            <div className="space-y-2">
+              <h3 className="heading-lg text-gradient font-bold">GRITUZ</h3>
+              <p className="text-sm text-muted-foreground tracking-wider font-medium">
+                Redefining Horizons
+              </p>
+            </div>
+            <p className="body-sm text-muted-foreground leading-relaxed max-w-xs">
+              Building scalable digital solutions that help growing businesses thrive. 
+              From websites and branding to marketing, automation, and custom software, 
+              we turn ideas into measurable growth.
             </p>
+            {/* Social Icons */}
+            <div className="flex items-center gap-4 pt-4">
+              {socialLinks.map((social) => (
+                <motion.a
+                  key={social.label}
+                  href={social.href}
+                  aria-label={social.label}
+                  className="w-10 h-10 rounded-lg bg-card/50 border border-glass-border flex items-center justify-center hover:bg-card hover:shadow-glow transition-all duration-300"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <social.icon className="w-5 h-5 text-muted-foreground hover:text-primary transition-colors" />
+                </motion.a>
+              ))}
+            </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Column 2 - Navigation */}
           <div>
-            <h4 className="font-semibold text-background mb-4">Quick Links</h4>
+            <h4 className="heading-sm text-foreground font-semibold mb-6">Navigation</h4>
             <ul className="space-y-3">
-              {quickLinks.map((link) => (
+              {navigationLinks.map((link) => (
                 <li key={link.path}>
                   <Link
                     to={link.path}
-                    className="text-background/70 hover:text-primary transition-colors text-sm"
+                    className="text-muted-foreground hover:text-primary transition-colors duration-200 text-sm flex items-center gap-2 group"
                   >
+                    <span className="w-1 h-1 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                     {link.name}
                   </Link>
                 </li>
@@ -77,16 +78,17 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Services */}
+          {/* Column 3 - Services */}
           <div>
-            <h4 className="font-semibold text-background mb-4">Services</h4>
+            <h4 className="heading-sm text-foreground font-semibold mb-6">Services</h4>
             <ul className="space-y-3">
-              {services.map((service) => (
+              {servicesLinks.map((service) => (
                 <li key={service.path}>
                   <Link
                     to={service.path}
-                    className="text-background/70 hover:text-primary transition-colors text-sm"
+                    className="text-muted-foreground hover:text-primary transition-colors duration-200 text-sm flex items-center gap-2 group"
                   >
+                    <span className="w-1 h-1 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                     {service.name}
                   </Link>
                 </li>
@@ -94,35 +96,44 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact */}
+          {/* Column 4 - Contact */}
           <div>
-            <h4 className="font-semibold text-background mb-4">Contact</h4>
+            <h4 className="heading-sm text-foreground font-semibold mb-6">Contact</h4>
             <ul className="space-y-4">
+              <li className="flex items-start gap-3">
+                <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                <span className="text-muted-foreground text-sm leading-relaxed">
+                  Whitefield, Bengaluru, Karnataka 560037, India
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <Phone className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                <a
+                  href="tel:+919876543210"
+                  className="text-muted-foreground hover:text-primary transition-colors duration-200 text-sm"
+                >
+                  +91 XXXXX XXXXX
+                </a>
+              </li>
               <li className="flex items-start gap-3">
                 <Mail className="w-5 h-5 text-primary shrink-0 mt-0.5" />
                 <a
                   href="mailto:letstalk@grituz.com"
-                  className="text-background/70 hover:text-primary transition-colors text-sm"
+                  className="text-muted-foreground hover:text-primary transition-colors duration-200 text-sm"
                 >
                   letstalk@grituz.com
                 </a>
-              </li>
-              <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                <span className="text-background/70 text-sm">
-                  Whitefield, Bangalore, India
-                </span>
               </li>
             </ul>
           </div>
         </div>
       </div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-background/10">
+      {/* Bottom Line */}
+      <div className="border-t border-glass-border">
         <div className="container-custom py-6">
-          <p className="text-center text-background/50 text-sm">
-            © 2026 Grituz. All Rights Reserved.
+          <p className="text-center text-muted-foreground text-sm">
+            © 2026 Grituz. All rights reserved.
           </p>
         </div>
       </div>

@@ -1,13 +1,12 @@
 import Layout from "@/components/layout/Layout";
 import HeroSection from "@/components/home/HeroSection";
-import ServicesSection from "@/components/home/ServicesSection";
-import AboutPreview from "@/components/home/AboutPreview";
-import WhyChooseUs from "@/components/home/WhyChooseUs";
-import ClientLogos from "@/components/home/ClientLogos";
+import AwardStrip from "@/components/home/AwardStrip";
+import ServicesSection from "@/components/home/ServicesSectionNew";
+import GrowthFramework from "@/components/home/GrowthFramework";
+import AboutSection from "@/components/home/AboutSection";
+import AdvantageSection from "@/components/home/AdvantageSection";
+import CTASection from "@/components/home/CTASection";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
-import PricingSection from "@/components/home/PricingSection";
-import FAQSection from "@/components/home/FAQSection";
-import CTABanner from "@/components/home/CTABanner";
 import LazySection from "@/components/ui/LazySection";
 
 const Index = () => {
@@ -16,7 +15,7 @@ const Index = () => {
       <HeroSection />
       
       <LazySection>
-        <ClientLogos />
+        <AwardStrip />
       </LazySection>
       
       <LazySection delay={0.1}>
@@ -24,11 +23,15 @@ const Index = () => {
       </LazySection>
       
       <LazySection delay={0.1}>
-        <AboutPreview />
+        <GrowthFramework />
       </LazySection>
       
       <LazySection delay={0.1}>
-        <WhyChooseUs />
+        <AboutSection />
+      </LazySection>
+      
+      <LazySection delay={0.1}>
+        <AdvantageSection />
       </LazySection>
       
       <LazySection delay={0.1}>
@@ -36,15 +39,7 @@ const Index = () => {
       </LazySection>
       
       <LazySection delay={0.1}>
-        <PricingSection />
-      </LazySection>
-      
-      <LazySection delay={0.1}>
-        <FAQSection />
-      </LazySection>
-      
-      <LazySection delay={0.1}>
-        <CTABanner />
+        <CTASection />
       </LazySection>
     </Layout>
   );
